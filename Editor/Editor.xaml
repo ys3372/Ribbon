@@ -1,0 +1,15 @@
+﻿<Window x:Class="Ribbon.Editor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ribbon"
+             mc:Ignorable="d" Height= "116" Width="300" ResizeMode="NoResize" Title="中国联合 - 设置柱体参数" >
+    <Border Background="#FFDADADA" Margin="0,0,0,1">
+        <StackPanel Margin="10,10,10,10" Background="White">
+            <Label Content="输入顶部偏移" Background="White" Height="21" FontWeight="DemiBold" FontFamily="Arial Black" FontSize="10"/>
+            <TextBox x:Name="Para" Width="92" Height="17" BorderBrush="#FFABC0FF"/>
+            <Button x:Name="Set" Content="Set" Height="16" Width="36" Click="SetParameter" FontSize="8"/>
+        </StackPanel>
+    </Border>
+</Window>

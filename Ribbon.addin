@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+	<Name>Ribbon</Name>
+    <Assembly>D:\VisualStudio\BIMDevelopment\Ribbon\bin\Debug\Ribbon.dll</Assembly>
+    <ClientId>212f2985-e966-49bd-b9bf-9a39d059ce7f</ClientId>
+    <FullClassName>Ribbon.App</FullClassName>
+    <Text>Ribbon</Text>
+    <Description>Ribbon Description</Description>
+    <VisibilityMode>AlwaysVisible</VisibilityMode>
+    <VendorId>CUC</VendorId>
+    <VendorDescription>chinacuc.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
