@@ -77,7 +77,7 @@ namespace Ribbon
             pdButton.LargeImage = new BitmapImage(uriLargeImage);
             //添加命令按钮
             PushButtonData pD3;
-            pD3 = CreatePushButton("Door", "测试按钮", dllPath, "Ribbon.AEditor", iconPath, "zglh.ico", "", "");
+            pD3 = CreatePushButton("Door", "测试按钮", dllPath, "Ribbon.Tag.TagWallLayersCommand", iconPath, "zglh.ico", "", "");
             pdButton.AddPushButton(pD3);
             #endregion
 
@@ -151,7 +151,7 @@ namespace Ribbon
             PushButtonData pDt7;
             pDt7 = CreatePushButton("t7", "g/重命名&打印", dllPath, "Ribbon.ActiveViewManager", iconPath, "7.ico", "", "");
             PushButtonData pDt8;
-            pDt8 = CreatePushButton("t8", "h/柱子修改", dllPath, "Ribbon.AEditor", iconPath, "8.ico", "", "");
+            pDt8 = CreatePushButton("t8", "h/参数修改", dllPath, "Ribbon.AEditor", iconPath, "8.ico", "", "");
             PushButtonData pDt9;
             pDt9 = CreatePushButton("t9", "i/测试", dllPath, "Ribbon.ExportCSV", iconPath, "7.ico", "", "");
 

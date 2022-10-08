@@ -52,12 +52,12 @@ namespace Ribbon
             Transaction trans = new Transaction(doc, "设置参数");
             trans.Start();
             {
-                string para = Para.Text;
-                ColumnSelectionFilter filter = new ColumnSelectionFilter();
-                Reference refer = uiDoc.Selection.PickObject(ObjectType.Element, filter, "选择柱体");
-                Editor window = new Editor(uiDoc);
-                FamilyInstance fi = doc.GetElement(refer) as FamilyInstance;
-                fi.get_Parameter(BuiltInParameter.FAMILY_TOP_LEVEL_OFFSET_PARAM).Set(Convert.ToDouble(para)/304.8);
+                //权宜
+                //string para = Para.Text;
+                
+                //Editor window = new Editor(uiDoc);
+                //FamilyInstance fi = doc.GetElement(refer) as FamilyInstance;
+                //fi.get_Parameter(BuiltInParameter.FAMILY_TOP_LEVEL_OFFSET_PARAM).Set(Convert.ToDouble(para)/304.8);
 
             }
             trans.Commit();

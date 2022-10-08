@@ -19,7 +19,6 @@ namespace Ribbon
         {
             UIDocument uiDoc = cD.Application.ActiveUIDocument;
             Document doc = uiDoc.Document;
-
             try
             {
                 var View = doc.ActiveView;

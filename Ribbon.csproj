@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -65,11 +66,23 @@
     <Compile Include="ASamples.cs" />
     <Compile Include="ASelectionFilter.cs" />
     <Compile Include="AToolList.cs" />
+    <Compile Include="Tag\Command\AnnotatePanel\TagWallLayers\TagWallLayersCommandData.cs" />
+    <Compile Include="Tag\Command\AnnotatePanel\TagWallLayers\TagWallLayersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tag\Command\AnnotatePanel\TagWallLayers\TagWallLayersForm.Designer.cs">
+      <DependentUpon>TagWallLayersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tag\Command\Helper\Message.cs" />
+    <Compile Include="Tag\Command\Selection\SelectFilterByCategory.cs" />
+    <Compile Include="Tag\Command\Type\LengthUnitType.cs" />
+    <Compile Include="Tag\Command\Type\WindowType.cs" />
+    <Compile Include="Tag\Utility\Units\LengthUnitConverter.cs" />
     <Compile Include="Tools\BreakMEPCurve.cs" />
     <Compile Include="Tools\CreateColumn.cs" />
-    <Compile Include="CW_Ceshi.cs" />
-    <Compile Include="CW_ColumnRevise.cs" />
-    <Compile Include="CW_EverythingColumn.cs" />
+    <Compile Include="CW\CW_Ceshi.cs" />
+    <Compile Include="CW\CW_ColumnRevise.cs" />
+    <Compile Include="CW\CW_EverythingColumn.cs" />
     <Compile Include="ActiveViewManager\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -90,7 +103,7 @@
     <Compile Include="Tools\CreateVerticalColumn.cs" />
     <Compile Include="Tools\CreateWall.cs" />
     <Compile Include="Tools\RoomVolumeModel.cs" />
-    <Compile Include="test.cs" />
+    <Compile Include="Tag\Command\AnnotatePanel\TagWallLayers\TagWallLayersCommand.cs" />
     <Compile Include="Tools\TextDetection.cs" />
     <Compile Include="Tools\PickBox.cs" />
     <Compile Include="Tools\GetSolids.cs" />
@@ -130,6 +143,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tag\Command\AnnotatePanel\TagWallLayers\TagWallLayersForm.resx">
+      <DependentUpon>TagWallLayersForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

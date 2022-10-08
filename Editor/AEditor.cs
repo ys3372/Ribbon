@@ -20,7 +20,9 @@ namespace Ribbon
         {
             UIDocument uiDoc = cD.Application.ActiveUIDocument;
             Document doc = uiDoc.Document;
+            ColumnSelectionFilter filter = new ColumnSelectionFilter();
 
+            Reference refer = uiDoc.Selection.PickObject(ObjectType.Element, filter, "选择柱体");
             try
             {
 
