@@ -29,25 +29,24 @@ namespace Ribbon
         {
             //程序目录
             string AddInPath = @"D:\VisualStudio\BIMDevelopment\Ribbon";
-
             //程序集dll目录
             string dllPath = AddInPath + @"\bin\debug\Ribbon.dll";
-
             //按钮图标目录
             string iconPath = AddInPath + @"\icon";
-
             //插件选项卡名
             string tabName = "中国联合";
-
+            string tabName2 = "研发工作台";
             //面板底部文字提示
-            string panelName = "新能源";
 
+
+            #region Tab1中国联合
             application.CreateRibbonTab(tabName);
 
             //RibbonPanel面板 - SplitButton按钮组 - PushButton 按钮
 
             #region 大按钮图标
             //这里画了一整个叫做“中国联合（tabName）”的面板
+            string panelName = "新能源";
             RibbonPanel panel = application.CreateRibbonPanel(tabName, panelName); 
             
             //示例一：按钮组
@@ -93,11 +92,11 @@ namespace Ribbon
             PushButtonData pD6;
             pD6 = CreatePushButton("t6", "c/创建楼板", dllPath, "Ribbon.CreateFloor", iconPath, "6.ico", "在指定位置创建楼板", "");
             PushButtonData pD24;
-            pD24 = CreatePushButton("t24", "c/创建斜柱", dllPath, "Ribbon.CreateInclinedColulmn", iconPath, "12.ico", "在指定位置创建斜柱", "");
+            pD24 = CreatePushButton("t24", "d/创建斜柱", dllPath, "Ribbon.CreateInclinedColulmn", iconPath, "12.ico", "在指定位置创建斜柱", "");
             PushButtonData pD25;
-            pD25 = CreatePushButton("t25", "c/创建斜板", dllPath, "Ribbon.CreateSlopeSlab", iconPath, "12.ico", "在指定位置创建斜柱", "");
+            pD25 = CreatePushButton("t25", "e/创建斜板", dllPath, "Ribbon.CreateSlopeSlab", iconPath, "12.ico", "在指定位置创建斜柱", "");
             PushButtonData pD26;
-            pD26 = CreatePushButton("t26", "c/创建墙体", dllPath, "Ribbon.CreateWall", iconPath, "12.ico", "在指定位置创建墙体", "");
+            pD26 = CreatePushButton("t26", "f/创建墙体1", dllPath, "Ribbon.Oct.CreateWall_1", iconPath, "#5.ico", "在指定位置创建墙体", "");
 
             panelArch.AddStackedItems(pD4, pD5, pD6);
             panelArch.AddSeparator();
@@ -216,6 +215,72 @@ namespace Ribbon
             //cbMemData = new ComboBoxMemberData("combobox1", "加载的族");
             //Autodesk.Revit.UI.ComboBox cBox = panelMEP.AddItem(cbData) as Autodesk.Revit.UI.ComboBox;
             //cBox.AddItem(cbMemData);
+
+            #endregion
+
+            #region Tab2研发工作台
+            application.CreateRibbonTab(tabName2);
+
+            #region 大按钮图标
+            //这里画了一整个叫做“中国联合（tabName）”的面板
+
+            RibbonPanel panelMenu = application.CreateRibbonPanel(tabName2,"测试工作台");
+
+            //示例2： 下拉按钮，用于显示下拉命令项
+            PulldownButtonData pdButtonData2 = new PulldownButtonData("Pulldown2", "测试菜单");
+            PulldownButton pdButton2 = panelMenu.AddItem(pdButtonData2) as PulldownButton;
+            Uri uriLargeImage2 = new Uri(Path.Combine(iconPath, "zglh.ico"), UriKind.Absolute);
+            pdButton2.LargeImage = new BitmapImage(uriLargeImage2);
+            //添加命令按钮
+            PushButtonData pDtest= CreatePushButton("用于开发测试", "测试按钮", dllPath, "Ribbon.Tag.TagWallLayersCommand", iconPath, "zglh.ico", "", "");
+            pdButton2.AddPushButton(pDtest);
+            #endregion
+
+            #region 创建楼板
+            RibbonPanel panelFloor = application.CreateRibbonPanel(tabName2, "创建楼板");
+
+            PushButtonData mpD7;
+            mpD7 = CreatePushButton("1", "方法一", dllPath, "Ribbon.Oct.CreateFloor_1", iconPath, "#1.ico", "选择三点", "");
+            PushButtonData mpD8;
+            mpD8 = CreatePushButton("2", "方法二", dllPath, "Ribbon.Oct.CreateFloor_2", iconPath, "#2.ico", "选择三点", "");
+            PushButtonData mpD9;
+            mpD9 = CreatePushButton("3", "方法三", dllPath, "Ribbon.Oct.CreateWall_3", iconPath, "#3.ico", "在指定位置创建楼板", "");
+            PushButtonData mpD10;
+            mpD10 = CreatePushButton("4", "方法四", dllPath, "Ribbon.Oct.CreateWall_4", iconPath, "#4.ico", "在指定位置创建斜柱", "");
+            PushButtonData mpD11;
+            mpD11 = CreatePushButton("5", "方法五", dllPath, "Ribbon.Oct.CreateWall_5", iconPath, "#5.ico", "在指定位置创建斜柱", "");
+            PushButtonData mpD12;
+            mpD12 = CreatePushButton("6", "测试", dllPath, "Ribbon.Oct.CreateWall_1", iconPath, "#6.ico", "在指定位置创建墙体", "");
+
+            panelFloor.AddStackedItems(mpD7, mpD8, mpD9);
+            panelFloor.AddSeparator();
+            panelFloor.AddStackedItems(mpD10, mpD11, mpD12);
+            #endregion
+
+            #region 五种方法创建墙
+            RibbonPanel panelWall = application.CreateRibbonPanel(tabName2, "创建墙");
+
+            PushButtonData mpD1;
+            mpD1 = CreatePushButton("1", "方法一", dllPath, "Ribbon.Oct.CreateWall_1", iconPath, "#1.ico", "选择两点+默认高度4000mm", "");
+            PushButtonData mpD2;
+            mpD2 = CreatePushButton("2", "方法二", dllPath, "Ribbon.Oct.CreateWall_2", iconPath, "#2.ico", "选择两点", "");
+            PushButtonData mpD3;
+            mpD3 = CreatePushButton("3", "方法三", dllPath, "Ribbon.Oct.CreateWall_3", iconPath, "#3.ico", "在指定位置创建楼板", "");
+            PushButtonData mpD4;
+            mpD4 = CreatePushButton("4", "方法四", dllPath, "Ribbon.Oct.CreateWall_4", iconPath, "#4.ico", "在指定位置创建斜柱", "");
+            PushButtonData mpD5;
+            mpD5 = CreatePushButton("5", "方法五", dllPath, "Ribbon.Oct.CreateWall_5", iconPath, "#5.ico", "在指定位置创建斜柱", "");
+            PushButtonData mpD6;
+            mpD6 = CreatePushButton("6", "测试", dllPath, "Ribbon.Oct.CreateWall_1", iconPath, "#6.ico", "在指定位置创建墙体", "");
+
+            panelWall.AddStackedItems(mpD1, mpD2, mpD3);
+            panelWall.AddSeparator();
+            panelWall.AddStackedItems(mpD4, mpD5, mpD6);
+            #endregion
+
+
+
+            #endregion
 
             return Result.Succeeded;
         }

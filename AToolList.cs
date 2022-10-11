@@ -5,16 +5,20 @@
 // Assembly location: D:\revit文件\TSZ\TSRevitFor2018-TSTEDS\DLL\TSZ.RevitBaseDll.dll
 // XML documentation location: D:\revit文件\TSZ\TSRevitFor2018-TSTEDS\DLL\TSZ.RevitBaseDll.xml
 
-using Autodesk.Revit.DB;
-using Autodesk.Revit.DB.Structure;
-using Autodesk.Revit.UI.Selection;
-using Autodesk.Revit.UI;
+#region
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using TSZ.RevitBaseDll.Extends;
+
+using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Structure;
+using Autodesk.Revit.UI.Selection;
+using Autodesk.Revit.UI;
 using Autodesk.Revit.Attributes;
+
+using TSZ.RevitBaseDll.Extends;
+#endregion
 
 namespace Ribbon
 {
@@ -939,4 +943,10 @@ namespace Ribbon
 
         }
     }
+
+
+
+
+
+
 }

@@ -57,16 +57,16 @@ namespace Ribbon
             Level top = doc.GetElement(topLevel) as Level;
             Level bottom = doc.GetElement(bottomLevel) as Level;
 
-            //MessageBox.Show("类型：楼层 属性" + top.ToString()
-            //    + "\r\n" + "顶部偏移：" + topOffset.ToString()
-            //    + "\r\n" + "底部偏移：" + baseOffset.ToString()
-            //    + "\r\n" + "顶部标高楼层名：" + topLevelString
-            //    + "\r\n" + "底部标高楼层ID：" + bottomLevel.ToString()
-            //    + "\r\n" + "顶部楼层高度" + top.Elevation * 304.8
-            //    + "\r\n" + "底部楼层高度" + bottom.Elevation * 304.8
-            //     + "\r\n" + "定位点坐标" + point.ToString()
-            //     + "\r\n" + "族类型" + familySymbol
-            //     + "\r\n" + "结构类型" + sType);
+            MessageBox.Show("类型：楼层 属性" + top.ToString()
+                + "\r\n" + "顶部偏移：" + topOffset.ToString()
+                + "\r\n" + "底部偏移：" + baseOffset.ToString()
+                + "\r\n" + "顶部标高楼层名：" + topLevelString
+                + "\r\n" + "底部标高楼层ID：" + bottomLevel.ToString()
+                + "\r\n" + "顶部楼层高度" + top.Elevation * 304.8
+                + "\r\n" + "底部楼层高度" + bottom.Elevation * 304.8
+                 + "\r\n" + "定位点坐标" + point.ToString()
+                 + "\r\n" + "族类型" + familySymbol
+                 + "\r\n" + "结构类型" + sType);
 
 
             //柱修改的设置

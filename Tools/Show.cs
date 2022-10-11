@@ -23,7 +23,7 @@ namespace Ribbon
             Autodesk.Revit.ApplicationServices.Application app = uiapp.Application;
             Document doc = uidoc.Document;
 
-            MessageBox.Show("智慧电厂");
+            MessageBox.Show("      感谢您的使用！" + "\r\n" + "           中国联合");
 
             return Result.Succeeded;
         }
