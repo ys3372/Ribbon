@@ -35,6 +35,9 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="app.ui">
+      <HintPath>src\app.ui\bin\Debug\app.ui.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RevitAPI">
@@ -63,10 +66,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="ASamples.cs" />
-    <Compile Include="ASelectionFilter.cs" />
-    <Compile Include="AToolList.cs" />
+    <Compile Include="InterfaceSetup.cs" />
+    <Compile Include="Tag\Revit\Register\RegisterFamilyManagerCommand.cs" />
+    <Compile Include="Tutorial\ASamples.cs" />
+    <Compile Include="Tutorial\ASelectionFilter.cs" />
+    <Compile Include="Tutorial\AToolList.cs" />
     <Compile Include="Oct\Create\Oct.cs" />
+    <Compile Include="Tag\Command\AnnotatePanel\FamilyManager\HideFamilyManagerCommand.cs" />
+    <Compile Include="Tag\Command\AnnotatePanel\FamilyManager\ShowFamilyManagerCommand.cs" />
     <Compile Include="Tag\Command\AnnotatePanel\TagWallLayers\TagWallLayersCommandData.cs" />
     <Compile Include="Tag\Command\AnnotatePanel\TagWallLayers\TagWallLayersForm.cs">
       <SubType>Form</SubType>
@@ -75,15 +82,16 @@
       <DependentUpon>TagWallLayersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Tag\Command\Helper\Message.cs" />
+    <Compile Include="Tag\Command\PaneIdentifiers.cs" />
     <Compile Include="Tag\Command\Selection\SelectFilterByCategory.cs" />
     <Compile Include="Tag\Command\Type\LengthUnitType.cs" />
     <Compile Include="Tag\Command\Type\WindowType.cs" />
     <Compile Include="Tag\Utility\Units\LengthUnitConverter.cs" />
     <Compile Include="Tools\BreakMEPCurve.cs" />
     <Compile Include="Tools\CreateColumn.cs" />
-    <Compile Include="CW\CW_Ceshi.cs" />
-    <Compile Include="CW\CW_ColumnRevise.cs" />
-    <Compile Include="CW\CW_EverythingColumn.cs" />
+    <Compile Include="Tutorial\CW_Ceshi.cs" />
+    <Compile Include="Tutorial\CW_ColumnRevise.cs" />
+    <Compile Include="Tutorial\CW_EverythingColumn.cs" />
     <Compile Include="ActiveViewManager\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -93,7 +101,7 @@
     </Compile>
     <Compile Include="Tools\Object3D.cs" />
     <Compile Include="Tools\Free3D.cs" />
-    <Compile Include="ATutorial.cs" />
+    <Compile Include="Tutorial\ATutorial.cs" />
     <Compile Include="Tools\SShapeRebarSample.cs" />
     <Compile Include="Tools\PlaceFireHydrant.cs" />
     <Compile Include="Tools\CreateElbow.cs" />

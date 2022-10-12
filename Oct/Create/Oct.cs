@@ -243,6 +243,7 @@ namespace Ribbon.Oct
 
     /// <summary>
     /// 方法二 三角形楼板 可设置结构/标高楼层
+    /// 还有一个向量normal控制楼板朝向，但朝向几乎完全由三个坐标控制，后面设定的必须垂直于定义的面否则报错。
     /// </summary>
     [Transaction(TransactionMode.Manual)]
     public class CreateFloor_2 : IExternalCommand
@@ -258,25 +259,36 @@ namespace Ribbon.Oct
             Level level = doc.GetElement(levelId) as Level;
             FloorType floorType = doc.GetElement(floorId) as FloorType;
 
+            XYZ normal = new XYZ(0, 0, 1);
+            XYZ normal1 = new XYZ(0, 0, -1);
+
             CurveArray curveArray = new CurveArray();
 
-            XYZ p1 = uiDoc.Selection.PickPoint("选择三个点，1/3");
-            XYZ p2 = uiDoc.Selection.PickPoint("选择三个点，1/3");
-            XYZ p3 = uiDoc.Selection.PickPoint("选择三个点，1/3");
 
-            curveArray.Append(Line.CreateBound(p1, p2));
-            curveArray.Append(Line.CreateBound(p2, p3));
-            curveArray.Append(Line.CreateBound(p3, p1));
-
-            using (Transaction trans = new Transaction(doc))
+            try
             {
-                trans.Start("创建楼板");
-                Floor floor = doc.Create.NewFloor(curveArray, floorType, level, true);
+                XYZ p1 = uiDoc.Selection.PickPoint("选择三个点，1/3");
+                XYZ p2 = uiDoc.Selection.PickPoint("选择三个点，2/3");
+                XYZ p3 = uiDoc.Selection.PickPoint("选择三个点，3/3");
 
-                trans.Commit();
+                curveArray.Append(Line.CreateBound(p1, p2));
+                curveArray.Append(Line.CreateBound(p2, p3));
+                curveArray.Append(Line.CreateBound(p3, p1));
+
+                using (Transaction trans = new Transaction(doc))
+                {
+                    trans.Start("创建楼板");
+                    Floor floor = doc.Create.NewFloor(curveArray, floorType, level, true, normal);
+
+                    trans.Commit();
+                }
+                return Result.Succeeded;
             }
 
-            return Result.Succeeded;
+            catch
+            {
+                return Result.Succeeded;
+            }
         }
     }
 

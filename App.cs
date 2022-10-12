@@ -7,6 +7,7 @@ using Autodesk.Revit.DB.Mechanical;
 using Autodesk.Revit.DB.Plumbing;
 using Autodesk.Revit.DB.Structure;
 using Autodesk.Revit.UI;
+using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.UI.Selection;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-//本案特殊using
 using System.Windows.Media.Imaging;
 using System.IO;
+
+//本案特殊using
+using TSZ.RevitBaseDll.Commands;
+using Application = Autodesk.Revit.ApplicationServices.Application;
+using app.ui;
 
 
 namespace Ribbon
@@ -27,6 +31,7 @@ namespace Ribbon
     {
         public Result OnStartup(UIControlledApplication application)
         {
+
             //程序目录
             string AddInPath = @"D:\VisualStudio\BIMDevelopment\Ribbon";
             //程序集dll目录
@@ -46,8 +51,7 @@ namespace Ribbon
 
             #region 大按钮图标
             //这里画了一整个叫做“中国联合（tabName）”的面板
-            string panelName = "新能源";
-            RibbonPanel panel = application.CreateRibbonPanel(tabName, panelName); 
+            RibbonPanel panel = application.CreateRibbonPanel(tabName, "新能源"); 
             
             //示例一：按钮组
             SplitButtonData splitButtonData = new SplitButtonData("中国联合", "中国联合");
@@ -154,11 +158,20 @@ namespace Ribbon
             PushButtonData pDt9;
             pDt9 = CreatePushButton("t9", "i/测试", dllPath, "Ribbon.ExportCSV", iconPath, "7.ico", "", "");
 
+            PushButtonData pDt10;
+            pDt10 = CreatePushButton("t10", "g/墙体面层标注", dllPath, "Ribbon.Tag.TagWallLayersCommand", iconPath, "11.ico", "在平面和立面上标注墙体结构，可根据需要修改字体样式", "");
+            PushButtonData pDt11;
+            pDt11 = CreatePushButton("t11", "h/族管理器", dllPath, "Ribbon.Tag.ShowFamilyManagerCommand", iconPath, "8.ico", "", "");
+            PushButtonData pDt12;
+            pDt12 = CreatePushButton("t12", "i/关闭族管理器", dllPath, "Ribbon.Tag.HideFamilyManagerCommand", iconPath, "7.ico", "", "");
+
             panelTest.AddStackedItems(pDt1, pDt2, pDt3);
             panelTest.AddSeparator();
             panelTest.AddStackedItems(pDt4, pDt5, pDt6);
             panelTest.AddSeparator();
             panelTest.AddStackedItems(pDt7, pDt8, pDt9);
+            panelTest.AddSeparator();
+            panelTest.AddStackedItems(pDt10, pDt11, pDt12);
             #endregion
 
             #region 标注计算板块
@@ -278,12 +291,22 @@ namespace Ribbon
             panelWall.AddStackedItems(mpD4, mpD5, mpD6);
             #endregion
 
+            #region 族管理器 一个简单按钮
 
+            RibbonPanel panelFM = application.CreateRibbonPanel(tabName2, "族管理器");
+            PushButtonData pdFM = CreatePushButton("fm", "开启族管理器", dllPath, "Ribbon.Tag.RegisterFamilyManagerCommand", iconPath, "5.ico", "在指定位置创建墙体", "");
+
+            panelFM.AddItem(pdFM);
+
+            application.ControlledApplication.ApplicationInitialized += DockablePaneRegisters;
+            #endregion
 
             #endregion
 
             return Result.Succeeded;
         }
+
+        #region private methods
         public PushButtonData CreatePushButton(string name, string txt, string dll, string com, string iconPath, string iconName, string tips, string iconTips)
         {
             //新建按钮绑定命令
@@ -308,6 +331,13 @@ namespace Ribbon
             return pbData;
         }
 
+        private void DockablePaneRegisters(object sender, Autodesk.Revit.DB.Events.ApplicationInitializedEventArgs e)
+        {
+            //register dockable pane
+            var familyManagerRegisterCommand = new RegisterFamilyManagerCommand();
+            familyManagerRegisterCommand.Execute(new UIApplication(sender as Application));
+        }
+        #endregion
         public Result OnShutdown(UIControlledApplication application)
         {
             return Result.Succeeded;

@@ -139,10 +139,15 @@ namespace Ribbon.Tag
                 ms = ex.Message;
                 return Result.Failed;
             }
-
-
             return Result.Succeeded;
         }
+
+        public static string GetPath()
+        {
+            return typeof(TagWallLayersCommand).Namespace + "." + nameof(TagWallLayersCommand); 
+        }
+
+
     }
 }
 
