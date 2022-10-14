@@ -29,6 +29,4 @@ namespace Ribbon.Tag
         }
         #endregion
     }
-
-
 }
